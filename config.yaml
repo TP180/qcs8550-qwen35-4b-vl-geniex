@@ -1,0 +1,32 @@
+# All paths are relative to this repository root.
+# Model files are deliberately not committed to Git.
+project:
+  name: qcs8550-qwen35-4b-vl-geniex
+  version: 0.1.0
+
+model:
+  source: unsloth/Qwen3.5-4B-GGUF-VLM:Q4_0
+  language_model: models/Qwen3.5-4B-Q4_0.gguf
+  vision_projector: models/mmproj-F16.gguf
+  format: GGUF
+  weight_quantization: Q4_0
+  vision_precision: F16
+
+geniex:
+  device: QCS8550
+  os_arch: QTI Linux / aarch64
+  runtime: GenieX + llama_cpp plugin
+  api_base_url: http://127.0.0.1:18181
+  model_id: unsloth/Qwen3.5-4B-GGUF-VLM:Q4_0
+  max_concurrency: 1
+
+inference:
+  temperature: 0.2
+  max_tokens: 32
+  timeout_seconds: 300
+  image_max_mb: 10
+
+benchmark:
+  image: demo/test_image.jpg
+  question: "Please describe the main content of the image and read visible text."
+  serial_requests: 38

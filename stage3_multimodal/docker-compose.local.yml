@@ -1,0 +1,24 @@
+services:
+  api:
+    build: .
+    environment:
+      LLAMA_BASE_URL: ${LLAMA_BASE_URL:-http://host.docker.internal:8080}
+      LLAMA_MODEL: ${LLAMA_MODEL:-Qwen3.5-0.8B-Q4_K_M.gguf}
+      EMBEDDING_BACKEND: ${EMBEDDING_BACKEND:-tfidf}
+      OCR_LANG: ${OCR_LANG:-chi_sim+eng}
+    volumes:
+      - ./data:/app/data
+      - ./documents:/app/documents:ro
+    ports:
+      - "9000:9000"
+    command: ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "9000"]
+
+  ui:
+    build: .
+    environment:
+      API_URL: http://api:9000
+    ports:
+      - "8502:8502"
+    depends_on:
+      - api
+    command: ["python", "-m", "streamlit", "run", "streamlit_app.py", "--server.address=0.0.0.0", "--server.port=8502", "--server.headless=true"]

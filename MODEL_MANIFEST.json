@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-09-16",
+  "local_cpu": {
+    "runtime": {
+      "executable": "llama-server.exe",
+      "version": "0.3.0-dev",
+      "build": "10632",
+      "commit": "11cd98842"
+    },
+    "model": {
+      "path": "models/Qwen3.5-0.8B-Q4_K_M.gguf",
+      "bytes": 532517120,
+      "sha256": "BD258782E35F7F458F8ACED1ADC053E6E92E89BC735BA3BE89D38A06121DC517",
+      "role": "language model"
+    },
+    "mmproj": {
+      "path": "models/mmproj-BF16.gguf",
+      "bytes": 207346528,
+      "sha256": "D312C4D02FD46EEA7A16E4F3BBB58840E6222209322CA1E33CA03247AD8935D6",
+      "role": "vision projector"
+    },
+    "api": {
+      "base_url": "http://127.0.0.1:8080",
+      "model_id": "Qwen3.5-0.8B-Q4_K_M.gguf",
+      "tested_backend": "CPU"
+    }
+  },
+  "board_npu": {
+    "verified_at": "2026-09-16",
+    "device": {
+      "soc": "QCS8550",
+      "codename": "kalama",
+      "arch": "aarch64",
+      "soc_revision": "2.0"
+    },
+    "os": {
+      "id": "qti-distro-rb-debug",
+      "name": "QTI Linux robotics platform distro with debug capabilities.",
+      "version": "e9cc40a3ea",
+      "kernel": "5.15.167-qki-consolidate #1 SMP PREEMPT Fri Dec 5 11:11:40 UTC 2025"
+    },
+    "runtime": {
+      "geniex_cli_version": "v0.3.14",
+      "qairt_runtime_version": "v2.45.0.260326",
+      "llama_cpp_runtime_hash": "be4a6a63e",
+      "geniex_real": {
+        "path": "/data/local/tmp/geniex/bin/geniex.real",
+        "sha256": "6bd503b1e8468057d1240d98305209e6bce3a4e08fe80153a45b25e65536c41d"
+      },
+      "libgeniex": {
+        "path": "/data/local/tmp/geniex/libs/libgeniex.so",
+        "sha256": "8f599982cc8c05cb22c2c62996369d8087bdcd839acb73b5491b750f5584a95a"
+      }
+    },
+    "plugins": {
+      "bridge_version": "v0.0.0",
+      "qairt": "v2.45.0.260326",
+      "llama_cpp": "be4a6a63e"
+    },
+    "root": "/data/local/tmp/geniex",
+    "language_model": {
+      "path": "/data/local/tmp/geniex/models/unsloth/Qwen3.5-4B-GGUF/Qwen3.5-4B-Q4_0.gguf",
+      "bytes": 2583221408,
+      "sha256": "298fcb5fe7a77ccc79745ae24751560c5ac56874caff4bb39b1f2055bd72b8bb",
+      "quantization": "Q4_0"
+    },
+    "vision_projector": {
+      "path": "/data/local/tmp/geniex/models/unsloth/Qwen3.5-4B-GGUF-VLM/mmproj-F16.gguf",
+      "bytes": 672423616,
+      "sha256": "cd88edcf8d031894960bb0c9c5b9b7e1fea6ebee02b9f7ce925a00d12891f864",
+      "precision": "F16"
+    },
+    "vlm_model_link": {
+      "path": "/data/local/tmp/geniex/models/unsloth/Qwen3.5-4B-GGUF-VLM/Qwen3.5-4B-Q4_0.gguf",
+      "resolves_to": "/data/local/tmp/geniex/models/unsloth/Qwen3.5-4B-GGUF/Qwen3.5-4B-Q4_0.gguf"
+    },
+    "model_id": "unsloth/Qwen3.5-4B-GGUF-VLM:Q4_0",
+    "api_url": "http://127.0.0.1:18181",
+    "runtime_evidence": "docs/BOARD_ARTIFACTS_20260916.md",
+    "last_experiment": {
+      "date": "2026-09-15",
+      "image_http_requests": 38,
+      "success": 38,
+      "success_rate": 1.0,
+      "avg_response_seconds": 17.78,
+      "p95_response_seconds": 18.10,
+      "prompt_tokens": 34,
+      "completion_tokens": 27,
+      "condition": "serial requests, max 32 completion tokens"
+    },
+    "sha256_status": "recorded for language model, mmproj, geniex.real and libgeniex.so",
+    "current_connectivity": "verified on 2026-09-16: kalama / root / aarch64"
+  }
+}

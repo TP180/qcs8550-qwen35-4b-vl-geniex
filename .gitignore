@@ -1,0 +1,40 @@
+# Local environments and generated state
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.run/
+.env
+
+# Large model/runtime artifacts (download separately)
+models/*.gguf
+*.gguf
+*.bin
+*.dlc
+*.context.bin
+*.so
+*.dll
+*.exe
+
+# Local logs, credentials and board connection material
+*.log
+*.pid
+board-connection/board-ssh-kit/board_*
+board-connection/board-ssh-kit/*known_hosts*
+board-connection/board-ssh-kit/connection*.json
+board-connection/board-ssh-kit/ssh-config-*
+
+# Generated RAG index
+stage3_multimodal/data/*.npy
+stage3_multimodal/data/*.jsonl
+stage3_multimodal/data/*.pkl
+# Historical local-only files from the original experiment workspace
+/api_server.py
+/client_test.py
+/streamlit_app.py
+/debug.log
+/npu-*.log
+/npu-*.pid
+/tailscale-*.log
+/vlm-*.log
+/board-connection/

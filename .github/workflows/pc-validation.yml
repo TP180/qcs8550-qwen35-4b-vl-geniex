@@ -1,0 +1,25 @@
+name: pc-validation
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Install runtime dependencies
+        run: python -m pip install -r requirements.txt -c stage3_multimodal/constraints.txt
+      - name: Validate Python syntax
+        run: python -m compileall -q stage3_multimodal/app stage3_multimodal/scripts scripts
+      - name: Run unit tests
+        working-directory: stage3_multimodal
+        run: python -m unittest discover -s tests -v
+      - name: Validate manifest and config
+        run: |
+          python -c "import json; json.load(open('MODEL_MANIFEST.json', encoding='utf-8-sig'))"
+          python -c "import yaml; yaml.safe_load(open('config.yaml', encoding='utf-8'))"
